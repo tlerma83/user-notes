@@ -1,20 +1,22 @@
 "use strict";
 //create new user with register
-app.factory("AuthFactory", function($q){
+app.factory("AuthFactory", function($q, $window){
 
     //check to see if a user already
     let currentUser = null;
 
-    let isAUser = () => {
-        return firebase.auth().currentUser ? true: false;
-    };
+//    let isAUser = () => {
+//        return firebase.auth().currentUser ? true: false;
+//    };
 
 
     let getUser = () => {
+        console.log("current user", currentUser);
         return currentUser;
-    }
 
-    
+    };
+
+
 
     //step one on authfactory....register
     let createUser = function(userObj){
@@ -41,7 +43,7 @@ app.factory("AuthFactory", function($q){
     let logoutUser = () => {
         return firebase.auth().signOut()
         .then(function(data){
-            $window.location.href("/");
+            $window.location.href = "/";
             console.log("logout user");
         });
 
@@ -56,6 +58,7 @@ app.factory("AuthFactory", function($q){
                     resolve(true);
                 }else {
                     resolve(false);
+                    console.log("no user?");
                 }
             });
         });
@@ -65,5 +68,5 @@ app.factory("AuthFactory", function($q){
 
 
 
-    return{createUser, loginUser, logoutUser, isAUser, isAuth, currentUser};
+    return{createUser, loginUser, logoutUser, isAuth, currentUser, getUser};
 });

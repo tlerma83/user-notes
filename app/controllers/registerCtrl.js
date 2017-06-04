@@ -10,11 +10,12 @@ app.controller("AuthCtrl", function($scope, $window, AuthFactory, $location){
         password: ""
     };
 
-//    if (AuthFactory.isAuth()) {
+    if (AuthFactory.isAuth()) {
+        console.log("user is here");
 //         $scope.logout();
-//    };
+    }
 
-
+//    AuthFactory.isAuth
 
 
     //create user, register
@@ -26,8 +27,6 @@ app.controller("AuthCtrl", function($scope, $window, AuthFactory, $location){
             password: $scope.account.password
         })
         .then((userStuff)=>{
-            console.log("User info: ", userStuff);
-            $scope.login();
         });
     };
 

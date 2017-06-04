@@ -7,13 +7,18 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, $location){
         password: ""
     };
 
+
     $scope.logout = () => {
         console.log("user is logging out");
         AuthFactory.logoutUser()
         .then(function(data){
-            $window.location.url= "/";
+            $location.path= "/login";
         });
     };
+
+    if (AuthFactory.isAuth()) {
+        $scope.logout();
+    }
 
 
     $scope.login = () => {
