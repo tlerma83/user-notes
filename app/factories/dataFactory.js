@@ -4,8 +4,7 @@ app.factory("DataFactory", function($q, $http, FBCreds){
 
     let postedNewNote = (newNote) => {
         return $q((resolve, reject) =>{
-           let object = JSON.stringify(newNote);
-           $http.put(`${FBCreds.databaseURL}/notes.json`)
+           $http.post(`${FBCreds.databaseURL}/notes.json`, newNote)
 
             .then((ObjFromFire) =>{
                 resolve(ObjFromFire);
@@ -28,6 +27,6 @@ app.factory("DataFactory", function($q, $http, FBCreds){
 
 
 
-    return {getNotes, postedNewNote};
+    return {postedNewNote, getNotes};
 
 });

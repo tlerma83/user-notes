@@ -2,7 +2,6 @@
 //create new user with register
 app.factory("AuthFactory", function($q, $window){
 
-    //check to see if a user already
     let currentUser = null;
 
 //    let isAUser = () => {
@@ -11,7 +10,6 @@ app.factory("AuthFactory", function($q, $window){
 
 
     let getUser = () => {
-        console.log("current user", currentUser);
         return currentUser;
 
     };
@@ -43,18 +41,18 @@ app.factory("AuthFactory", function($q, $window){
     let logoutUser = () => {
         return firebase.auth().signOut()
         .then(function(data){
-            $window.location.href = "/";
+            //$window.location.href = "/";
             console.log("logout user");
         });
 
     };
 
     let isAuth = function (){
-//        console.log("is authinticated?");
         return $q((resolve, reject) =>{
             firebase.auth().onAuthStateChanged((user) => {
                 if (user){
-                    currentUser= user.uid;
+                    //pass entire object to get uid and email
+                    currentUser= user;
                     resolve(true);
                 }else {
                     resolve(false);

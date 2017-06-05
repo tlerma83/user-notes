@@ -5,7 +5,7 @@ var app = angular.module("AuthenticationApp", ["ngRoute"]);
 //step 2 on app
 app.config(function($routeProvider){
     $routeProvider
-    .when("/login", {
+    .when("/", {
         templateUrl: "partials/login.html",
         controller: "LoginCtrl"
     })
@@ -17,7 +17,7 @@ app.config(function($routeProvider){
         templateUrl: "partials/newNote.html",
         controller: "NewNoteCtrl"
     })
-    .otherwise("/login");
+    .otherwise("/");
 });
 
 //step 1 on app

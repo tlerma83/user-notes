@@ -10,12 +10,11 @@ app.controller("AuthCtrl", function($scope, $window, AuthFactory, $location){
         password: ""
     };
 
-    if (AuthFactory.isAuth()) {
-        console.log("user is here");
-//         $scope.logout();
-    }
+//    if (AuthFactory.isAuth()) {
+//        console.log("user is here");
+////         $scope.logout();
+//    }
 
-//    AuthFactory.isAuth
 
 
     //create user, register
@@ -27,6 +26,8 @@ app.controller("AuthCtrl", function($scope, $window, AuthFactory, $location){
             password: $scope.account.password
         })
         .then((userStuff)=>{
+            console.log("user register success");
+            $window.location.href= "#!/login/newNotes";
         });
     };
 

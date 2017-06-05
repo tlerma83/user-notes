@@ -12,11 +12,12 @@ app.controller("LoginCtrl", function($scope, AuthFactory, $window, $location){
         console.log("user is logging out");
         AuthFactory.logoutUser()
         .then(function(data){
-            $location.path= "/login";
+            $location.path("/");
         });
     };
 
     if (AuthFactory.isAuth()) {
+        console.log("There's a user!!! LOGOUT!!!!!");
         $scope.logout();
     }
 
