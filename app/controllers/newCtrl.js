@@ -20,7 +20,7 @@ app.controller("NewNoteCtrl", function($scope, $window, $location, AuthFactory, 
         DataFactory.postedNewNote($scope.newNote)
 
         .then (function(response){
-            $window.location.href= "#!/login/newNotes";
+            $scope.newNote.note = "";
         });
     };
 });
