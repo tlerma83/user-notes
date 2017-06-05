@@ -17,6 +17,10 @@ app.config(function($routeProvider){
         templateUrl: "partials/newNote.html",
         controller: "NewNoteCtrl"
     })
+    .when("/readNotes", {
+        templateUrl: "partials/notelist.html",
+        controller: "UserNotes"
+    })
     .otherwise("/");
 });
 
